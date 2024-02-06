@@ -1,10 +1,12 @@
 import React from 'react';
 import TaskItem from './TaskItem';
 
-function TaskList({ tasks, deleteTask, markTaskAsCompleted, editTask }) {
+function TaskList({ tasks, priorityFilter, deleteTask, markTaskAsCompleted, editTask }) {
+    const filteredTasks = priorityFilter === 'all' ? tasks : tasks.filter(task => task.priority === priorityFilter);
+
     return (
         <ul className="list-group">
-            {tasks.map(task => (
+            {filteredTasks.map(task => (
                 <TaskItem
                     key={task.id}
                     task={task}
