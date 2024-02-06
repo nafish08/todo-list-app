@@ -5,6 +5,7 @@ import AddTaskForm from './components/AddTaskForm';
 function App() {
   const [tasks, setTasks] = useState([]);
   const [priorityFilter, setPriorityFilter] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Load tasks from local storage
   useEffect(() => {
@@ -52,6 +53,12 @@ function App() {
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
 
+  // Calculate total tasks count
+  const totalTasksCount = tasks.length;
+
+  // Calculate completed tasks count
+  const completedTasksCount = tasks.filter(task => task.completed).length;
+
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="bg-white w-auto sm:w-96 h-auto rounded-lg p-3">
@@ -68,11 +75,18 @@ function App() {
         </div>
         <div className="card__content p-2">
           <div className="container">
-            <h1 className="font-bold uppercase">Todo List</h1>
+            <h1 className="font-bold text-xl uppercase">Todo List</h1>
+
+            {/* Counter */}
+            <div className="mb-3">
+              <span className="me-3">Total Tasks: {totalTasksCount}</span>
+              <span>Completed Tasks: {completedTasksCount}</span>
+            </div>
+
             <AddTaskForm addTask={addTask} />
             <div className="my-3">
               <select
-                className="form-select bg-gray-800 text-white"
+                className="form-select  bg-gray-800 text-white"
                 value={priorityFilter}
                 onChange={(e) => setPriorityFilter(e.target.value)}
               >
@@ -81,11 +95,23 @@ function App() {
                 <option value="medium">Medium Priority</option>
                 <option value="high">High Priority</option>
               </select>
+
+              {/* Search */}
+              <div className="my-3 ml-2 inline">
+                <input className='pl-2 bg-gray-200 text-white'
+                  type="text"
+                  placeholder="Search tasks..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+              </div>
             </div>
+
 
             <TaskList
               tasks={tasks}
               priorityFilter={priorityFilter}
+              searchQuery={searchQuery}
               deleteTask={deleteTask}
               markTaskAsCompleted={markTaskAsCompleted}
               editTask={editTask}
