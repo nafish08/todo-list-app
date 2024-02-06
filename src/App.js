@@ -66,9 +66,9 @@ function App() {
             <span className="bg-pink-500 box inline-block center w-3 h-3 rounded-full"></span>
           </div>
         </div>
-        <div className="card__content">
+        <div className="card__content p-2">
           <div className="container">
-            <h1 className="">Todo List</h1>
+            <h1 className="font-bold uppercase">Todo List</h1>
             <AddTaskForm addTask={addTask} />
             <div className="my-3">
               <select
