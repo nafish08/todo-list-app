@@ -11,6 +11,11 @@ function App() {
     setTasks([...tasks, newTask]);
   };
 
+  // Function to delete a task by id
+  const deleteTask = (taskId) => {
+    setTasks(tasks.filter(task => task.id !== taskId));
+  };
+
   // Function to mark a task as completed by id
   const markTaskAsCompleted = (taskId) => {
     setTasks(tasks.map(task => {
@@ -27,6 +32,7 @@ function App() {
       <AddTaskForm addTask={addTask} />
       <TaskList
         tasks={tasks}
+        deleteTask={deleteTask}
         markTaskAsCompleted={markTaskAsCompleted}
       />
     </div>
