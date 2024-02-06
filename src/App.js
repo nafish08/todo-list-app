@@ -53,30 +53,48 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <h1>Todo List</h1>
-      <AddTaskForm addTask={addTask} />
-      <div className="my-3">
-        <select
-          className="form-select"
-          value={priorityFilter}
-          onChange={(e) => setPriorityFilter(e.target.value)}
-        >
-          <option value="all">All</option>
-          <option value="low">Low Priority</option>
-          <option value="medium">Medium Priority</option>
-          <option value="high">High Priority</option>
-        </select>
-      </div>
+    <div className="flex justify-center items-center h-screen">
+      <div className="bg-white w-auto sm:w-96 h-auto rounded-lg p-3">
+        <div className="flex p-2 gap-1">
+          <div className="">
+            <span className="bg-blue-500 inline-block center w-3 h-3 rounded-full"></span>
+          </div>
+          <div className="circle">
+            <span className="bg-purple-500 inline-block center w-3 h-3 rounded-full"></span>
+          </div>
+          <div className="circle">
+            <span className="bg-pink-500 box inline-block center w-3 h-3 rounded-full"></span>
+          </div>
+        </div>
+        <div className="card__content">
+          <div className="container">
+            <h1 className="">Todo List</h1>
+            <AddTaskForm addTask={addTask} />
+            <div className="my-3">
+              <select
+                className="form-select bg-gray-800 text-white"
+                value={priorityFilter}
+                onChange={(e) => setPriorityFilter(e.target.value)}
+              >
+                <option value="all">All</option>
+                <option value="low">Low Priority</option>
+                <option value="medium">Medium Priority</option>
+                <option value="high">High Priority</option>
+              </select>
+            </div>
 
-      <TaskList
-        tasks={tasks}
-        priorityFilter={priorityFilter}
-        deleteTask={deleteTask}
-        markTaskAsCompleted={markTaskAsCompleted}
-        editTask={editTask}
-      />
+            <TaskList
+              tasks={tasks}
+              priorityFilter={priorityFilter}
+              deleteTask={deleteTask}
+              markTaskAsCompleted={markTaskAsCompleted}
+              editTask={editTask}
+            />
+          </div>
+        </div>
+      </div>
     </div>
+
   );
 }
 

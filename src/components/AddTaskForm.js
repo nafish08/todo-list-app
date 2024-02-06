@@ -14,18 +14,20 @@ function AddTaskForm({ addTask }) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input
+            <input className=' bg-gray-200 text-white my-3'
                 type="text"
                 placeholder="Add a new task"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
             />
-            <select value={priority} onChange={(e) => setPriority(e.target.value)}>
+            <select
+                className="form-select bg-gray-600 text-white"
+                value={priority} onChange={(e) => setPriority(e.target.value)}>
                 <option value="low">Low Priority</option>
                 <option value="medium">Medium Priority</option>
                 <option value="high">High Priority</option>
             </select>
-            <button type="submit">Add Task</button>
+            <button className='hover:brightness-110 hover:animate-pulse font-bold py-1 px-6 bg-gradient-to-r from-blue-500 to-pink-500 text-white' type="submit">Add Task</button>
         </form>
     );
 }
