@@ -13,13 +13,13 @@ function EditTaskForm({ task, editTask, toggleEdit }) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input
+            <input className='bg-gray-200 px-1 my-3'
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
             />
-            <button className='hover:brightness-110 hover:animate-pulse font-bold py-1 px-2 m-1 bg-blue-400 text-white' type="submit">Save</button>
-            <button className='hover:brightness-110 hover:animate-pulse font-bold py-1 px-2 m-1 bg-red-400 text-white' onClick={toggleEdit}>Cancel</button>
+            <button className='hover:brightness-110 hover:animate-pulse px-2 bg-[#3b82f6] dark:text-white mb-2' type="submit">Save</button>
+            <button className='hover:brightness-110 hover:animate-pulse px-2 bg-[#ec4899] dark:text-white mr-2 mb-2' onClick={toggleEdit}>Cancel</button>
         </form>
     );
 }

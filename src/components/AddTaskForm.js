@@ -14,14 +14,14 @@ function AddTaskForm({ addTask }) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input className=' bg-gray-200 text-white my-3'
+            <input className=' bg-gray-200 px-1 my-3'
                 type="text"
                 placeholder="Add a new task"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
             />
             <select
-                className="form-select bg-gray-600 text-white"
+                className="form-select bg-gray-600 text-white ml-3"
                 value={priority} onChange={(e) => setPriority(e.target.value)}>
                 <option value="low">Low Priority</option>
                 <option value="medium">Medium Priority</option>
