@@ -26,6 +26,16 @@ function App() {
     }));
   };
 
+  // Function to edit a task by id
+  const editTask = (taskId, newTitle) => {
+    setTasks(tasks.map(task => {
+      if (task.id === taskId) {
+        return { ...task, title: newTitle };
+      }
+      return task;
+    }));
+  };
+
   return (
     <div className="container">
       <h1>Todo List</h1>
@@ -34,6 +44,7 @@ function App() {
         tasks={tasks}
         deleteTask={deleteTask}
         markTaskAsCompleted={markTaskAsCompleted}
+        editTask={editTask}
       />
     </div>
   );

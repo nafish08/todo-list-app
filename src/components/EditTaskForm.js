@@ -1,26 +1,27 @@
+// EditTaskForm.js
 import React, { useState } from 'react';
 
-function AddTaskForm({ addTask }) {
-    const [title, setTitle] = useState('');
+function EditTaskForm({ task, editTask, toggleEdit }) {
+    const [title, setTitle] = useState(task.title);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!title.trim()) return;
-        addTask({ id: Date.now(), title, completed: false });
-        setTitle('');
+        editTask(task.id, title);
+        toggleEdit();
     };
 
     return (
         <form onSubmit={handleSubmit}>
             <input
                 type="text"
-                placeholder="Add a new task"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
             />
-            <button type="submit" className="btn btn-primary">Add Task</button>
+            <button type="submit">Save</button>
+            <button onClick={toggleEdit}>Cancel</button>
         </form>
     );
 }
 
-export default AddTaskForm;
+export default EditTaskForm;
