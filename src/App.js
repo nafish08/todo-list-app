@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import TaskList from './components/TaskList';
 import AddTaskForm from './components/AddTaskForm';
@@ -6,34 +6,50 @@ import AddTaskForm from './components/AddTaskForm';
 function App() {
   const [tasks, setTasks] = useState([]);
 
+  // Load tasks from local storage
+  useEffect(() => {
+    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+    if (storedTasks) {
+      setTasks(storedTasks);
+    }
+  }, []);
+
   // Function to add a new task
   const addTask = (newTask) => {
-    setTasks([...tasks, newTask]);
+    const updatedTasks = [...tasks, newTask];
+    setTasks(updatedTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
 
   // Function to delete a task by id
   const deleteTask = (taskId) => {
-    setTasks(tasks.filter(task => task.id !== taskId));
+    const updatedTasks = tasks.filter(task => task.id !== taskId);
+    setTasks(updatedTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
 
   // Function to mark a task as completed by id
   const markTaskAsCompleted = (taskId) => {
-    setTasks(tasks.map(task => {
+    const updatedTasks = tasks.map(task => {
       if (task.id === taskId) {
         return { ...task, completed: true };
       }
       return task;
-    }));
+    });
+    setTasks(updatedTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
 
   // Function to edit a task by id
   const editTask = (taskId, newTitle) => {
-    setTasks(tasks.map(task => {
+    const updatedTasks = tasks.map(task => {
       if (task.id === taskId) {
         return { ...task, title: newTitle };
       }
       return task;
-    }));
+    });
+    setTasks(updatedTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
 
   return (
