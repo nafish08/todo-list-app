@@ -15,7 +15,7 @@ This project is a simple Todo List application built using React.js. It allows u
 - tailwindcss (for styling)
 
 ## Getting Started
-1. Clone the repository: `git clone <repository-url>`
+1. Clone the repository: `git clone <https://github.com/nafish08/todo-list-app.git>`
 2. Navigate to the project directory: `cd todo-list-app`
 3. Install dependencies: `npm install`
 4. Start the development server: `npm start`
