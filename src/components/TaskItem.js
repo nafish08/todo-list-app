@@ -18,8 +18,8 @@ function TaskItem({ task, deleteTask, markTaskAsCompleted, editTask }) {
           toggleEdit={toggleEdit}
         />
       ) : (
-        <div className='grid grid-cols-2 gap-3'>
-          <div className='flex items-center'>
+        <div className='grid grid-cols-3 gap-1'>
+          <div className='col-span-2 flex items-center'>
             <input
               className='dark:border-white-400/20 dark:scale-100 transition-all duration-500 ease-in-out dark:hover:scale-110 dark:checked:scale-100 w-4 h-4 mr-2'
               type="checkbox"

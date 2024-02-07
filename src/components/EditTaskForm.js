@@ -17,6 +17,7 @@ function EditTaskForm({ task, editTask, toggleEdit }) {
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
+                maxLength={25}
             />
             <button className='hover:brightness-110 hover:animate-pulse bg-[#3b82f6] dark:text-white my-3' type="submit">Save</button>
             <button className='hover:brightness-110 hover:animate-pulse bg-[#ec4899] dark:text-white my-3' onClick={toggleEdit}>Cancel</button>
