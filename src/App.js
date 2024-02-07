@@ -61,7 +61,7 @@ function App() {
 
   return (
     <div className="flex justify-center items-center h-screen">
-      <div className="bg-white sm:w-96 h-auto rounded-lg p-3">
+      <div className="bg-white h-auto rounded-lg p-3">
         <div className="flex p-2 gap-1">
           <div className="">
             <span className="bg-blue-500 inline-block center w-3 h-3 rounded-full"></span>

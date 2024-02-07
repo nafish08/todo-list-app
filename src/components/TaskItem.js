@@ -10,7 +10,7 @@ function TaskItem({ task, deleteTask, markTaskAsCompleted, editTask }) {
 
 
   return (
-    <li className={`list-group-item flex items-center justify-between ${task.completed ? 'completed' : ''}`}>
+    <li className={`grid grid-cols-1  ${task.completed ? 'completed' : ''}`}>
       {isEditing ? (
         <EditTaskForm
           task={task}
@@ -28,7 +28,7 @@ function TaskItem({ task, deleteTask, markTaskAsCompleted, editTask }) {
             />
             <span className="flex-1 truncate">{task.title}</span>
           </div>
-          <div className='grid grid-cols-2 gap-1'>
+          <div className='grid sm:grid-cols-2 lg:grid-cols-2 gap-1'>
             <button
               className="hover:brightness-110 hover:animate-pulse px-2 bg-[#3b82f6] dark:text-white mb-2"
               onClick={toggleEdit}

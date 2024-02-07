@@ -13,13 +13,13 @@ function AddTaskForm({ addTask }) {
     };
 
     return (
-        <form className='grid grid-cols-3 gap-2' onSubmit={handleSubmit}>
-            <input className=' bg-gray-200 px-1 my-3'
+        <form className='grid grid-cols-4 gap-2' onSubmit={handleSubmit}>
+            <input className=' col-span-2 bg-gray-200 px-2 my-3'
                 type="text"
-                placeholder="Add a new task (max 25 characters)"
+                placeholder="Add a new task (max 35 characters)"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                maxLength={25}
+                maxLength={35}
             />
             <select
                 className=" bg-gray-600 text-white my-3"
