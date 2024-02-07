@@ -18,7 +18,7 @@ function TaskItem({ task, deleteTask, markTaskAsCompleted, editTask }) {
           toggleEdit={toggleEdit}
         />
       ) : (
-        <>
+        <div className='grid grid-cols-2 gap-3'>
           <div className='flex items-center'>
             <input
               className='dark:border-white-400/20 dark:scale-100 transition-all duration-500 ease-in-out dark:hover:scale-110 dark:checked:scale-100 w-4 h-4 mr-2'
@@ -28,7 +28,7 @@ function TaskItem({ task, deleteTask, markTaskAsCompleted, editTask }) {
             />
             <span className="flex-1 truncate">{task.title}</span>
           </div>
-          <div>
+          <div className='grid grid-cols-2 gap-1'>
             <button
               className="hover:brightness-110 hover:animate-pulse px-2 bg-[#3b82f6] dark:text-white mb-2"
               onClick={toggleEdit}
@@ -36,14 +36,14 @@ function TaskItem({ task, deleteTask, markTaskAsCompleted, editTask }) {
               Edit
             </button>
             <button
-              className="hover:brightness-110 hover:animate-pulse px-2 bg-[#ec4899] dark:text-white mr-2 mb-2"
+              className="hover:brightness-110 hover:animate-pulse px-2 bg-[#ec4899] dark:text-white mb-2"
               onClick={() => deleteTask(task.id)}
             >
               Delete
             </button>
 
           </div>
-        </>
+        </div>
       )}
     </li>
 
