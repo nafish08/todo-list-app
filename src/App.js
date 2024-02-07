@@ -33,10 +33,10 @@ function App() {
   };
 
   // Function to mark a task as completed by id
-  const markTaskAsCompleted = (taskId) => {
+  const markTaskAsCompleted = (taskId, completed) => {
     const updatedTasks = tasks.map(task => {
       if (task.id === taskId) {
-        return { ...task, completed: true };
+        return { ...task, completed: completed };
       }
       return task;
     });

@@ -10,6 +10,9 @@ function TaskItem({ task, deleteTask, markTaskAsCompleted, editTask }) {
     setIsEditing(!isEditing);
   };
 
+  const handleCheckboxChange = () => {
+    markTaskAsCompleted(task.id, !task.completed); // Toggle completion status
+  };
 
   return (
     <li className={`grid grid-cols-1  ${task.completed ? 'completed' : ''}`}>
@@ -26,9 +29,9 @@ function TaskItem({ task, deleteTask, markTaskAsCompleted, editTask }) {
               className='dark:border-white-400/20 dark:scale-100 transition-all duration-500 ease-in-out dark:hover:scale-110 dark:checked:scale-100 w-4 h-4 mr-2'
               type="checkbox"
               checked={task.completed}
-              onChange={() => markTaskAsCompleted(task.id)}
+              onChange={handleCheckboxChange} // Update the onChange handler
             />
-            <span className="flex-1 truncate">{task.title}</span>
+            <span style={{ textDecoration: task.completed ? 'line-through' : 'none', color: task.completed ? 'gray' : 'black' }}>{task.title}</span>
           </div>
           <div className='grid sm:grid-cols-2 lg:grid-cols-2 gap-1'>
             <button
