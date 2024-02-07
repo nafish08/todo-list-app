@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import TaskItem from './TaskItem';
 
 function TaskList({ tasks, priorityFilter, searchQuery, deleteTask, markTaskAsCompleted, editTask }) {
@@ -7,22 +7,21 @@ function TaskList({ tasks, priorityFilter, searchQuery, deleteTask, markTaskAsCo
     const [filteredTasks, setFilteredTasks] = useState([]);
 
     // Filter tasks based on priority
-    const filterTasks = () => {
+    const filterTasks = useCallback(() => {
         let filtered = tasks;
         if (priorityFilter !== 'all') {
             filtered = filtered.filter(task => task.priority === priorityFilter);
         }
-        // Filter tasks based on search query
         if (searchQuery) {
             filtered = filtered.filter(task => task.title.toLowerCase().includes(searchQuery.toLowerCase()));
         }
         setFilteredTasks(filtered);
-    };
+    }, [tasks, priorityFilter, searchQuery]);
 
     // Update filtered tasks when priority or search query changes
     useEffect(() => {
         filterTasks();
-    }, [priorityFilter, searchQuery, tasks]);
+    }, [priorityFilter, searchQuery, tasks, filterTasks]);
 
     return (
         <ul className="list-group">

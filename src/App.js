@@ -92,9 +92,9 @@ function App() {
             </div>
 
             <AddTaskForm addTask={addTask} />
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-4 gap-3 my-5">
               <select
-                className="form-select  bg-gray-800 text-white"
+                className=" bg-gray-800 text-white"
                 value={priorityFilter}
                 onChange={(e) => setPriorityFilter(e.target.value)}
               >
@@ -105,9 +105,9 @@ function App() {
               </select>
 
               {/* search */}
-              <div className="">
+              <div className="col-span-3">
                 {isSearchVisible ? (
-                  <input className='bg-gray-200 px-2'
+                  <input className=' w-full bg-gray-200 px-2'
                     type="text"
                     placeholder="Search tasks..."
                     value={searchQuery}
