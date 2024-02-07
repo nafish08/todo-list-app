@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import EditTaskForm from './EditTaskForm';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 function TaskItem({ task, deleteTask, markTaskAsCompleted, editTask }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -33,13 +35,13 @@ function TaskItem({ task, deleteTask, markTaskAsCompleted, editTask }) {
               className="hover:brightness-110 hover:animate-pulse px-2 bg-[#3b82f6] dark:text-white mb-2"
               onClick={toggleEdit}
             >
-              Edit
+              <FontAwesomeIcon icon={faPenToSquare} />
             </button>
             <button
               className="hover:brightness-110 hover:animate-pulse px-2 bg-[#ec4899] dark:text-white mb-2"
               onClick={() => deleteTask(task.id)}
             >
-              Delete
+              <FontAwesomeIcon icon={faTrashCan} />
             </button>
 
           </div>

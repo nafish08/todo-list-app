@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import TaskList from './components/TaskList';
 import AddTaskForm from './components/AddTaskForm';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function App() {
   const [tasks, setTasks] = useState([]);
   const [priorityFilter, setPriorityFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
 
   // Load tasks from local storage
   useEffect(() => {
@@ -59,6 +62,11 @@ function App() {
   // Calculate completed tasks count
   const completedTasksCount = tasks.filter(task => task.completed).length;
 
+  // Function to toggle search bar visibility
+  const toggleSearch = () => {
+    setIsSearchVisible(!isSearchVisible);
+  };
+
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="bg-white h-auto rounded-lg p-3">
@@ -84,7 +92,7 @@ function App() {
             </div>
 
             <AddTaskForm addTask={addTask} />
-            <div className="my-3">
+            <div className="grid grid-cols-4 gap-3">
               <select
                 className="form-select  bg-gray-800 text-white"
                 value={priorityFilter}
@@ -96,15 +104,20 @@ function App() {
                 <option value="high">High Priority</option>
               </select>
 
-              {/* Search */}
-              <div className="my-3 ml-2 inline">
-                <input className='pl-2 bg-gray-200 text-white'
-                  type="text"
-                  placeholder="Search tasks..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
+              {/* search */}
+              <div className="">
+                {isSearchVisible ? (
+                  <input className='bg-gray-200 px-2'
+                    type="text"
+                    placeholder="Search tasks..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                  />
+                ) : (
+                  <FontAwesomeIcon icon={faSearch} onClick={toggleSearch} style={{ cursor: 'pointer' }} />
+                )}
               </div>
+
             </div>
 
 

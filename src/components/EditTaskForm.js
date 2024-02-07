@@ -1,4 +1,5 @@
-// EditTaskForm.js
+import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 
 function EditTaskForm({ task, editTask, toggleEdit }) {
@@ -19,8 +20,8 @@ function EditTaskForm({ task, editTask, toggleEdit }) {
                 onChange={(e) => setTitle(e.target.value)}
                 maxLength={35}
             />
-            <button className='hover:brightness-110 hover:animate-pulse bg-[#3b82f6] dark:text-white my-3' type="submit">Save</button>
-            <button className='hover:brightness-110 hover:animate-pulse bg-[#ec4899] dark:text-white my-3' onClick={toggleEdit}>Cancel</button>
+            <button className='hover:brightness-110 hover:animate-pulse bg-[#3b82f6] dark:text-white my-3' type="submit"><FontAwesomeIcon icon={faCheck} /></button>
+            <button className='hover:brightness-110 hover:animate-pulse bg-[#ec4899] dark:text-white my-3' onClick={toggleEdit}><FontAwesomeIcon icon={faXmark} /></button>
         </form>
     );
 }
